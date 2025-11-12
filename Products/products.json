@@ -1,0 +1,19 @@
+[
+    {
+        "id": 1,
+        "name": "camera",
+        "description" : "an old camera in perfect working condition.",
+        "price" : 50,
+        "high" : 50,
+        "link" : "https://images.pexels.com/photos/34649617/pexels-photo-34649617.jpeg"
+
+    },
+     {
+        "id": 2,
+        "name": "Painting - Sunset View",
+        "description": "A handmade painting by a local artist.",
+        "price": 80,
+        "high": 80,
+        "link" : "https://images.pexels.com/photos/2253900/pexels-photo-2253900.jpeg"
+    }
+]
