@@ -3,9 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PRODUCTS</title>
+    <title>{{product.name}}</title>
 </head>
 <body>
+    <!--
+    i used for loop using jinja2 to exhibit the products and put some inline styles in advance
+
     
+    -->
+        <h1>{{ product.name }}</h1>
+    <img src="{{ product.link }}" alt="{{ product.name }}" width="300">
+    <p>{{ product.description }}</p>
+    <p>Starting Price: ${{ product.price }}</p>
+    <p>Highest Bid: ${{ product.high }}</p>
+
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+
+    <form method="POST">
+        <label for="bid">type a bid:</label>
+        <input type="text" name="bid" id="bid" required>
+        <button type="submit">BID</button>
+    </form>
+
+    <br>
+    <a href="{{ url_for('home') }}">Back to Home</a>
 </body>
 </html>
