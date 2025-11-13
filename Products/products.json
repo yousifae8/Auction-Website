@@ -14,5 +14,37 @@
         "price": 80,
         "high": 81.5,
         "link": "https://images.pexels.com/photos/2253900/pexels-photo-2253900.jpeg"
+    },
+    {
+        "id": 1,
+        "name": "car",
+        "description": "something",
+        "price": 10000.0,
+        "high": 10000.0,
+        "link": "www.google.com"
+    },
+    {
+        "id": 2,
+        "name": "chair",
+        "description": "something",
+        "price": 50.0,
+        "high": 50.0,
+        "link": "www.google.com"
+    },
+    {
+        "id": 3,
+        "name": "chair",
+        "description": "something",
+        "price": 50.0,
+        "high": 50.0,
+        "link": "www.google.com"
+    },
+    {
+        "id": 4,
+        "name": "chair",
+        "description": "something",
+        "price": 50.0,
+        "high": 50.0,
+        "link": "www.google.com"
     }
 ]
