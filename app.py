@@ -7,17 +7,32 @@ app = Flask(__name__)
 data = "Products/products.json"
 
 class idCounter():
+    """
+    This id counter class has two methods for now, 
+    the corrent number method which shows the last number 
+    and the increment method which increases the meantime number per adding one product. 
+    """
     def __init__(self, id=0):
         self.id = id
     def id_current_num(self):
         return self.id
 
-        pass
+        
     def id_increase(self):
          self.id += 1
          return self.id
 
-id_num = idCounter(0)
+def products():
+    with open(data, "r") as products:
+        return json.load(products)
+    
+items = products()
+
+max_id = max(item["id"] for item in items) if items else 0
+
+id_num = idCounter(max_id)
+
+
 
 
 
@@ -25,17 +40,25 @@ id_num = idCounter(0)
 
 @app.route("/products/<int:product_id>", methods=["GET", "POST"])
 def details(product_id):
-    det = products()
+    products_list = products()
     product = None
 
    
-    for i in det:
+    for i in products_list:
         if i["id"] == product_id:
             product = i
             break
    
     if not product:
-        return "Product not found", 404
+        return "<link rel='stylesheet' " \
+        "href='../static/styles.css'>" \
+        "<body style='text-align : center'>" \
+        "<div class='not-found'>" \
+        "<p style='margin-top : 80px; font-size : 50px' > " \
+        "Product not found <br><br>404" \
+        "</p>" \
+        "</div>" \
+        "</body>", 404
 
 
     if request.method == "POST":
@@ -46,7 +69,7 @@ def details(product_id):
             if bid > product["high"]:
                 product["high"] = bid
                 with open(data, "w") as file:
-                    json.dump(det, file, indent=4)
+                    json.dump(products_list, file, indent=4)
             else:
                 error = "Your bid must be higher than the current highest bid."
                 return render_template("products.html", product=product, error=error)
@@ -59,11 +82,9 @@ def details(product_id):
     return render_template("products.html", product=product)
 
 
-def products():
-    with open(data, "r") as products:
-        return json.load(products)
 
-def json_data(id,name,description,price,link):
+
+def json_data(name,description,price,link):
     new_product = {
         "id": id_num.id_increase(),
         "name": name,
@@ -83,16 +104,26 @@ def add():
         price = request.form.get("price")
         link = request.form.get("link")
 
-        user_data = json_data(id_num,name,description,price,link)
+        if not name or not description or not price or not link:
+            error = "All bars are required to be filled."
+            return render_template("add.html", error=error)
+        try:
+            price = float(price)
+        except ValueError:
+            error = "Price must be a valid number."
+            return render_template("add.html", error=error)
+        
+
+        user_data = json_data(name,description,price,link)
         with open(data) as products:
             content = json.load(products)
 
         content.append(user_data)
         with open(data, "w") as file:
             json.dump(content, file, indent=4)
+
         return redirect(url_for("home"))
     return render_template("add.html")
-
 
 
 

@@ -4,18 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{product.name}}</title>
+    <link rel="stylesheet" href="../static/styles.css">
 </head>
 <body>
-    <!--
-    i used for loop using jinja2 to exhibit the products and put some inline styles in advance
 
-    
-    -->
         <h1>{{ product.name }}</h1>
     <img src="{{ product.link }}" alt="{{ product.name }}" width="300">
     <p>{{ product.description }}</p>
     <p>Starting Price: ${{ product.price }}</p>
     <p>Highest Bid: ${{ product.high }}</p>
+    <p id="product-id" style="display: none;">{{product.id}}</p>
 
     {% if error %}
         <p style="color: red;">{{ error }}</p>
@@ -23,11 +21,26 @@
 
     <form method="POST">
         <label for="bid">type a bid:</label>
-        <input type="text" name="bid" id="bid" required>
-        <button type="submit">BID</button>
+        <input type="text" name="bid" id="bidBar" required>
+        <button type="submit" id="bidButton">BID</button>
     </form>
 
     <br>
     <a href="{{ url_for('home') }}">Back to Home</a>
+    <script>
+        const productId = "{{product.id}}";
+        const bidButton = document.getElementById("bidButton");
+        const bidBar = document.getElementById("bidBar");
+        const stKey = "bid_" + productId;
+        const lastBidTyped = localStorage.getItem(stKey);
+        if(lastBidTyped){
+            bidBar.value = lastBidTyped
+        }
+        
+        bidButton.addEventListener("click",()=> {
+            localStorage.setItem(stKey,bidBar.value)
+        });
+
+    </script>
 </body>
 </html>
