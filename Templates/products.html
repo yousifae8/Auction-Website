@@ -1,46 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{product.name}}</title>
-    <link rel="stylesheet" href="../static/styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ product.name }}</title>
+ 
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #0d1b2a; 
+      color: #f8f9fa;
+    }
+    .card {
+      background-color: #1a1a2e;
+      border: none;
+      color: #f8f9fa;
+      max-width: 700px;
+      width: 100%;
+    }
+    .card-title {
+      color: #ffc107; 
+    }
+    .btn-success {
+      background-color: #ffc107;
+      border: none;
+      color: #000;
+      font-weight: bold;
+    }
+    .btn-success:hover {
+      background-color: #e0a800;
+    }
+    .product-image {
+      max-height: 350px;
+      object-fit: cover;
+    }
+  </style>
 </head>
 <body>
 
-        <h1>{{ product.name }}</h1>
-    <img src="{{ product.link }}" alt="{{ product.name }}" width="300">
-    <p>{{ product.description }}</p>
-    <p>Starting Price: ${{ product.price }}</p>
-    <p>Highest Bid: ${{ product.high }}</p>
-    <p id="product-id" style="display: none;">{{product.id}}</p>
 
-    {% if error %}
-        <p style="color: red;">{{ error }}</p>
-    {% endif %}
+  <div class="container d-flex justify-content-center align-items-center min-vh-100">
+    <div class="card shadow-lg p-4 text-center rounded-4">
+      
 
-    <form method="POST">
-        <label for="bid">type a bid:</label>
-        <input type="text" name="bid" id="bidBar" required>
-        <button type="submit" id="bidButton">BID</button>
-    </form>
+      <h1 class="card-title mb-4">{{ product.name }}</h1>
 
-    <br>
-    <a href="{{ url_for('home') }}">Back to Home</a>
-    <script>
-        const productId = "{{product.id}}";
-        const bidButton = document.getElementById("bidButton");
-        const bidBar = document.getElementById("bidBar");
-        const stKey = "bid_" + productId;
-        const lastBidTyped = localStorage.getItem(stKey);
-        if(lastBidTyped){
-            bidBar.value = lastBidTyped
-        }
-        
-        bidButton.addEventListener("click",()=> {
-            localStorage.setItem(stKey,bidBar.value)
-        });
 
-    </script>
+      <img src="{{ product.link }}" alt="{{ product.name }}" 
+           class="img-fluid rounded mb-3 product-image"
+           onerror="this.onerror=null; this.src='/static/default.png';">
+
+
+      <p class="lead">{{ product.description }}</p>
+      <p><strong>Starting Price:</strong> ${{ product.price }}</p>
+      <p><strong>Highest Bid:</strong> ${{ product.high }}</p>
+      <p class="text-muted">{{ product.last_bid_time or "No bids yet" }}</p>
+
+
+      {% if error %}
+        <div class="alert alert-danger mt-3">{{ error }}</div>
+      {% endif %}
+
+
+      <form method="POST" class="mt-4">
+        <div class="mb-3">
+          <label for="bidBar" class="form-label">Set a bid:</label>
+          <input type="text" name="bid" id="bidBar" class="form-control text-center" required>
+        </div>
+        <button type="submit" id="bidButton" class="btn btn-success w-100 rounded-pill">
+          Place Bid
+        </button>
+      </form>
+
+ 
+      <a href="{{ url_for('home') }}" class="btn btn-link mt-3 text-warning">Back to Home</a>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/static/script.js"></script>
 </body>
 </html>

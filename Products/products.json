@@ -4,23 +4,72 @@
         "name": "camera",
         "description": "an old camera in perfect working condition.",
         "price": 50,
-        "high": 900.3,
-        "link": "https://images.pexels.com/photos/34649617/pexels-photo-34649617.jpeg"
+        "high": 1000.0,
+        "link": "https://images.pexels.com/photos/34649617/pexels-photo-34649617.jpeg",
+        "last_bid_time": "2025-11-16 16:18:12"
     },
     {
         "id": 2,
         "name": "Painting - Sunset View",
         "description": "A handmade painting by a local artist.",
         "price": 80,
-        "high": 83.0,
-        "link": "https://images.pexels.com/photos/2253900/pexels-photo-2253900.jpeg"
+        "high": 84.0,
+        "link": "https://images.pexels.com/photos/2253900/pexels-photo-2253900.jpeg",
+        "last_bid_time": "2025-11-15 16:49:47"
     },
     {
         "id": 3,
         "name": "chess",
         "description": "a classic chess with its board",
         "price": 100.0,
+        "high": 12.0,
+        "link": "https://images.pexels.com/photos/4973821/pexels-photo-4973821.jpeg",
+        "last_bid_time": "2025-11-16 13:03:17"
+    },
+    {
+        "id": 4,
+        "name": "Iphone X",
+        "description": "Silver Iphone X With Airpods",
+        "price": 700.0,
+        "high": 700.0,
+        "link": "https://images.pexels.com/photos/788946/pexels-photo-788946.jpeg",
+        "created_at": "2025-11-16 14:10:43"
+    },
+    {
+        "id": 5,
+        "name": "Mac",
+        "description": "Minimalist Workspace with Apple Laptop and Keyboard",
+        "price": 1500.0,
+        "high": 1500.0,
+        "link": "https://images.pexels.com/photos/34703569/pexels-photo-34703569.jpeg",
+        "created_at": "2025-11-16 14:13:34"
+    },
+    {
+        "id": 6,
+        "name": "Watch",
+        "description": "Round Michael Kors Chronograph Watch",
+        "price": 100.0,
         "high": 100.0,
-        "link": "https://images.pexels.com/photos/4973821/pexels-photo-4973821.jpeg"
+        "link": "https://images.pexels.com/photos/2783873/pexels-photo-2783873.jpeg",
+        "created_at": "2025-11-16 14:18:42"
+    },
+    {
+        "id": 7,
+        "name": "wax candles",
+        "description": "Handmade Soy Wax Candles",
+        "price": 200.0,
+        "high": 200.0,
+        "link": "https://image2url.com/images/1763300078996-41adf4ea-8d82-4f77-bda5-97ab12fa2ec5.jpg",
+        "created_at": "2025-11-16 15:37:31"
+    },
+    {
+        "id": 8,
+        "name": "ay kalam",
+        "description": "no description",
+        "price": 10.0,
+        "high": 11.0,
+        "link": "www ",
+        "created_at": "2025-11-16 15:38:57",
+        "last_bid_time": "2025-11-16 16:10:22"
     }
 ]

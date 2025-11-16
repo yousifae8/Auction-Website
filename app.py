@@ -1,10 +1,13 @@
 from flask import Flask, render_template, request,redirect,url_for
+from datetime import datetime
 import json 
+
+
 
 app = Flask(__name__)
 
 
-data = "Products/products.json"
+data = "products/products.json"
 
 class idCounter():
     """
@@ -68,6 +71,7 @@ def details(product_id):
             
             if bid > product["high"]:
                 product["high"] = bid
+                product["last_bid_time"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
                 with open(data, "w") as file:
                     json.dump(products_list, file, indent=4)
             else:
@@ -91,7 +95,8 @@ def json_data(name,description,price,link):
         "description": description,
         "price": float(price),
         "high": float(price),
-        "link": link
+        "link": link,
+        "created_at": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     }
     return new_product
 
