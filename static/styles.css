@@ -18,3 +18,31 @@ body {
   color: black;
   border-radius: 25px;
 }
+.login-form{
+  
+  font-size: 40px;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  background-color: #243648;
+  width: 40%;
+  margin: 200px auto;
+  border-radius: 10px;
+  border: none;
+
+}
+.username,.password,.submit{
+  font-weight: bold;
+  text-align: center;
+  padding: 10px;
+  width: 50%;
+  border-radius: 10px;
+  border: none;
+  margin-top: 10px;
+
+
+}
+.submit{
+  width: 25%;
+  margin-top: 20px;
+
+}
