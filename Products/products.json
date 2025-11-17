@@ -4,9 +4,9 @@
         "name": "camera",
         "description": "an old camera in perfect working condition.",
         "price": 50,
-        "high": 1000.0,
+        "high": 1100.0,
         "link": "https://images.pexels.com/photos/34649617/pexels-photo-34649617.jpeg",
-        "last_bid_time": "2025-11-16 16:18:12"
+        "last_bid_time": "2025-11-17 09:28:28"
     },
     {
         "id": 2,
@@ -22,9 +22,9 @@
         "name": "chess",
         "description": "a classic chess with its board",
         "price": 100.0,
-        "high": 12.0,
+        "high": 60.0,
         "link": "https://images.pexels.com/photos/4973821/pexels-photo-4973821.jpeg",
-        "last_bid_time": "2025-11-16 13:03:17"
+        "last_bid_time": "2025-11-17 09:29:51"
     },
     {
         "id": 4,

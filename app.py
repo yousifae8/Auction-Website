@@ -6,6 +6,8 @@ import json
 
 app = Flask(__name__)
 
+user = "yousif"
+pas = "123"
 
 data = "products/products.json"
 
@@ -35,8 +37,26 @@ max_id = max(item["id"] for item in items) if items else 0
 
 id_num = idCounter(max_id)
 
+def remove_product():
+    return render_template("remove.html", items=items)
 
+@app.route("/admin", methods=["GET","POST"])
+def login():
 
+    
+
+    if request.method == "POST":
+
+        username = request.form["username"]
+        password = request.form["password"]
+
+        if username == user and password == pas:
+            return remove_product()
+        
+        else:
+            return render_template("admin.html")
+        
+    return render_template("admin.html")
 
 
 
