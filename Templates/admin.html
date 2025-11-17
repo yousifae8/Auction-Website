@@ -17,9 +17,10 @@
             
                 <input type="password" name="password" id="password" class="password" placeholder="password"><br>
                 
-                <button type="submit" class="submit" id="login" onclick="saveUserAndPass()">Login</button>
+                <button type="submit" class="submit" id="login">Login</button>
             </div>
         </form>
+        <a href="{{ url_for('home') }}" class="btn btn-link mt-3 w-100" id="back-home">Back to Home</a>
     </div>
     <script src="/static/script.js">
 
