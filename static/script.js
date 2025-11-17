@@ -1,14 +1,13 @@
+const login = document.getElementById("login");
+const username = document.getElementById("username")
+const password = document.getElementById("password")
 
-const productId = "{{product.id}}";
-const bidButton = document.getElementById("bidButton");
-const bidBar = document.getElementById("bidBar");
-const stKey = "bid_" + productId;
-const lastBidTyped = localStorage.getItem(stKey);
+username.value = localStorage.getItem("username")
+password.value = localStorage.getItem("password")
 
-
-if(lastBidTyped){
-  bidBar.value = lastBidTyped;
+const saveUserAndPass = () => {
+    localStorage.setItem("username", username.value)
+    localStorage.setItem("password", password.value)
 }
-bidButton.addEventListener("click", () => {
-  localStorage.setItem(stKey, bidBar.value);
-});
+
+login.addEventListener("click", saveUserAndPass)
