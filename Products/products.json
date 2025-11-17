@@ -1,39 +1,13 @@
 [
     {
-        "id": 1,
-        "name": "camera",
-        "description": "an old camera in perfect working condition.",
-        "price": 50,
-        "high": 1100.0,
-        "link": "https://images.pexels.com/photos/34649617/pexels-photo-34649617.jpeg",
-        "last_bid_time": "2025-11-17 09:28:28"
-    },
-    {
-        "id": 2,
-        "name": "Painting - Sunset View",
-        "description": "A handmade painting by a local artist.",
-        "price": 80,
-        "high": 84.0,
-        "link": "https://images.pexels.com/photos/2253900/pexels-photo-2253900.jpeg",
-        "last_bid_time": "2025-11-15 16:49:47"
-    },
-    {
-        "id": 3,
-        "name": "chess",
-        "description": "a classic chess with its board",
-        "price": 100.0,
-        "high": 60.0,
-        "link": "https://images.pexels.com/photos/4973821/pexels-photo-4973821.jpeg",
-        "last_bid_time": "2025-11-17 09:29:51"
-    },
-    {
         "id": 4,
         "name": "Iphone X",
         "description": "Silver Iphone X With Airpods",
         "price": 700.0,
-        "high": 700.0,
+        "high": 1001.0,
         "link": "https://images.pexels.com/photos/788946/pexels-photo-788946.jpeg",
-        "created_at": "2025-11-16 14:10:43"
+        "created_at": "2025-11-16 14:10:43",
+        "last_bid_time": "2025-11-17 11:12:52"
     },
     {
         "id": 5,
@@ -54,22 +28,31 @@
         "created_at": "2025-11-16 14:18:42"
     },
     {
-        "id": 7,
-        "name": "wax candles",
-        "description": "Handmade Soy Wax Candles",
-        "price": 200.0,
-        "high": 200.0,
-        "link": "https://image2url.com/images/1763300078996-41adf4ea-8d82-4f77-bda5-97ab12fa2ec5.jpg",
-        "created_at": "2025-11-16 15:37:31"
+        "id": 10,
+        "name": "house",
+        "description": "Beige Bungalow House",
+        "price": 20000.0,
+        "high": 20000.1,
+        "link": "https://images.pexels.com/photos/259588/pexels-photo-259588.jpeg",
+        "created_at": "2025-11-17 11:15:18",
+        "last_bid_time": "2025-11-17 11:19:35"
     },
     {
-        "id": 8,
-        "name": "ay kalam",
-        "description": "no description",
-        "price": 10.0,
-        "high": 11.0,
-        "link": "www ",
-        "created_at": "2025-11-16 15:38:57",
-        "last_bid_time": "2025-11-16 16:10:22"
+        "id": 11,
+        "name": "TV",
+        "description": "Black CRT TV",
+        "price": 300.0,
+        "high": 300.0,
+        "link": "https://images.pexels.com/photos/2251206/pexels-photo-2251206.jpeg",
+        "created_at": "2025-11-17 11:16:49"
+    },
+    {
+        "id": 12,
+        "name": "chess",
+        "description": "Chess Pieces on Chess Board",
+        "price": 100.0,
+        "high": 100.0,
+        "link": "https://images.pexels.com/photos/4973821/pexels-photo-4973821.jpeg",
+        "created_at": "2025-11-17 11:27:50"
     }
 ]

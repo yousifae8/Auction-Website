@@ -37,26 +37,9 @@ max_id = max(item["id"] for item in items) if items else 0
 
 id_num = idCounter(max_id)
 
-def remove_product():
-    return render_template("remove.html", items=items)
+# def remove_product():
+#     return render_template("remove.html", items=items)
 
-@app.route("/admin", methods=["GET","POST"])
-def login():
-
-    
-
-    if request.method == "POST":
-
-        username = request.form["username"]
-        password = request.form["password"]
-
-        if username == user and password == pas:
-            return remove_product()
-        
-        else:
-            return render_template("admin.html")
-        
-    return render_template("admin.html")
 
 
 
@@ -152,10 +135,34 @@ def add():
 
 
 
+@app.route("/remove/<int:product_id>", methods=["POST"])
+def remove_product(product_id):
+    products_list = products()
+
+    
+    products_list = [item for item in products_list if item["id"] != product_id]
+
+    
+    with open(data, "w") as file:
+        json.dump(products_list, file, indent=4)
+
+    
+    return render_template("remove.html", items=products_list)
 
 
+@app.route("/admin", methods=["GET","POST"])
+def login():
+    if request.method == "POST":
+        username = request.form["username"]
+        password = request.form["password"]
 
+        if username == user and password == pas:
+            
+            return render_template("remove.html", items=products())
+        else:
+            return render_template("admin.html")
 
+    return render_template("admin.html")
 
 
 @app.route("/")
