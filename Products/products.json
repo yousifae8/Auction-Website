@@ -4,10 +4,10 @@
         "name": "Iphone X",
         "description": "Silver Iphone X With Airpods",
         "price": 700.0,
-        "high": 1101.0,
+        "high": 1102.0,
         "link": "https://images.pexels.com/photos/788946/pexels-photo-788946.jpeg",
         "created_at": "2025-11-16 14:10:43",
-        "last_bid_time": "2025-11-17 17:35:38"
+        "last_bid_time": "2025-11-18 14:47:24"
     },
     {
         "id": 2,
@@ -39,15 +39,6 @@
         "last_bid_time": "2025-11-17 11:19:35"
     },
     {
-        "id": 5,
-        "name": "TV",
-        "description": "Black CRT TV",
-        "price": 300.0,
-        "high": 300.0,
-        "link": "https://images.pexels.com/photos/2251206/pexels-photo-2251206.jpeg",
-        "created_at": "2025-11-17 11:16:49"
-    },
-    {
         "id": 6,
         "name": "chess",
         "description": "Chess Pieces on Chess Board",
@@ -55,16 +46,6 @@
         "high": 100.0,
         "link": "https://images.pexels.com/photos/4973821/pexels-photo-4973821.jpeg",
         "created_at": "2025-11-17 11:27:50"
-    },
-    {
-        "id": 13,
-        "name": "headphones",
-        "description": "Top View Photo of Black Wireless Headphones",
-        "price": 70.0,
-        "high": 71.0,
-        "link": "https://images.pexels.com/photos/1649771/pexels-photo-1649771.jpeg",
-        "created_at": "2025-11-17 16:47:52",
-        "last_bid_time": "2025-11-18 11:10:50"
     },
     {
         "id": 14,
@@ -77,38 +58,11 @@
     },
     {
         "id": 15,
-        "name": "Land Rover",
-        "description": "White Land Rover Range Rover Suv on Road\r\n",
-        "price": 7000.0,
-        "high": 7000.0,
-        "link": "https://images.pexels.com/photos/116675/pexels-photo-116675.jpeg",
-        "created_at": "2025-11-17 16:51:10"
-    },
-    {
-        "id": 16,
-        "name": "1212",
-        "description": "1212",
-        "price": 10.0,
-        "high": 10.0,
-        "link": "11",
-        "created_at": "2025-11-18 11:42:16"
-    },
-    {
-        "id": 17,
-        "name": "111",
-        "description": "111",
-        "price": 10.0,
-        "high": 10.0,
-        "link": "111",
-        "created_at": "2025-11-18 11:42:30"
-    },
-    {
-        "id": 18,
-        "name": "no",
-        "description": "no ",
-        "price": 100.0,
-        "high": 100.0,
-        "link": "no image",
-        "created_at": "2025-11-18 12:20:58"
+        "name": "house",
+        "description": "house",
+        "price": 20000.0,
+        "high": 20000.0,
+        "link": "https://ap.rdcpix.com/9f6944f11642cfbc9a834f2059829f7el-m1509888778rd-w960_h720.jpg",
+        "created_at": "2025-11-18 15:28:05"
     }
 ]

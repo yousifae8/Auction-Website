@@ -13,10 +13,11 @@ body {
   margin-bottom: 20px;
   display: inline-block;
   margin-top: 200px;
-  padding: 10px 20px;
-  background-color: #ffc107;
+  padding-bottom: 50px;
+  background-color: #347bc7;
   color: #0d1b2a;
   border-radius: 25px;
+  width: 40%;
 }
 .login-form{
   
@@ -47,7 +48,7 @@ body {
 
 }
 #back-home{
-  color: rgba(255, 193, 7);
+  color: #ffc107;
   font-size: 20px;
 }
 .back-home{

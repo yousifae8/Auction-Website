@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Remove</title>
+  <title>Remove Products</title>
   
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
@@ -45,30 +45,55 @@
   </style>
 </head>
 <body>
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand text-warning" href="/">AuctionSite</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
+              data-bs-target="#navbarNav" aria-controls="navbarNav" 
+              aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link text-warning" href="/">Home</a>
+          </li>
+         <li class="nav-item">
+            <a class="nav-link text-warning" href="/add">Add Product</a>
+        </li>
+          <li class="nav-item">
+            <a class="nav-link active text-warning" href="/admin">Admin</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
   <div class="container mt-4">
-    <h1 class="mb-4 text-warning">Auction</h1>
-    <p class="lead">Admin Page</p>
+    <p class="lead">Remove Products</p>
 
     <div class="row">
-      {% for item in items %}
+      {% for item in product_list %}
       <div class="col-md-6 mb-4"> 
         <div class="card shadow-lg h-100">
-          <img class="card-img-top img-fluid" 
-               src="{{ 'https://' + item.link if not item.link.startswith('http') else item.link }}" 
-               alt="{{ item.name }}" 
-               onerror="this.onerror=null; this.src='../static/default.png';">
+          <img class="card-img-top img-fluid"
+               src="{{ item.link if item.link and item.link.startswith('http') else url_for('static', filename='default.png') }}"
+               alt="{{ item.name }}"
+               onerror="this.onerror=null; this.src='../static/default.png'">
+
           <div class="card-body">
             <h4 class="card-title">{{ item.name }}</h4>
             <p class="card-text">{{ item.description }}</p>
             <p><strong>Starting Price:</strong> ${{ item.price }}</p>
             <p><strong>Highest Bid:</strong> ${{ item.high }}</p>
-            <p> created at: {{ item.created_at}}</p>
-            <p>last bit was at: {{ item.last_bid_time or "No bids yet" }}</p>
+            <p>Created at: {{ item.created_at }}</p>
+            <p>Last bid was at: {{ item.last_bid_time or "No bids yet" }}</p>
 
             <form action="{{ url_for('remove_product', product_id=item.id) }}" method="POST">
                 <button type="submit" class="btn btn-danger w-100">Remove</button>
             </form>
-
           </div>
         </div>
       </div>

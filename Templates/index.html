@@ -56,11 +56,12 @@
             <a class="nav-link active text-warning" href="/">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/add">Add Product</a>
+            <a class="nav-link text-warning" href="/add">Add Product</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/admin">Admin</a>
+            <a class="nav-link text-warning" href="/admin">Admin</a>
           </li>
+          
         </ul>
       </div>
     </div>
@@ -75,10 +76,12 @@
       {% for item in items %}
       <div class="col-md-6 mb-4"> 
         <div class="card shadow-lg h-100">
-          <img class="card-img-top img-fluid" 
-               src="{{ 'https://' + item.link if not item.link.startswith('http') else item.link }}" 
-               alt="{{ item.name }}" 
-               onerror="this.onerror=null; this.src='../static/default.png';">
+          <img class="card-img-top img-fluid"
+     src="{{ item.link if item.link and item.link.startswith('http') else url_for('static', filename='default.png') }}"
+     alt="{{ item.name }}"
+     onerror="this.onerror=null; this.scr='../static/default.png'">
+
+
           <div class="card-body">
             <h4 class="card-title">{{ item.name }}</h4>
             <p class="card-text">{{ item.description }}</p>

@@ -113,6 +113,13 @@ def add():
         price = request.form.get("price")
         link = request.form.get("link")
 
+        link = request.form.get("link")
+
+    
+
+      
+
+
         if not name or not description or not price or not link:
             error = "All bars are required to be filled."
             return render_template("add.html", error=error)
@@ -127,7 +134,7 @@ def add():
             return render_template("add.html", error=error)
         
 
-        user_data = json_data(name,description,price,link)
+        user_data = json_data(str(name),str(description),price,str(link))
         
         data.add_product(user_data)
 
@@ -135,29 +142,28 @@ def add():
     return render_template("add.html")
 
 
-
-@app.route("/remove/<int:product_id>", methods=["GET","POST"])
-def remove_product(product_id):
-
-    products_list = data.remove(product_id)
-
-    return render_template("remove.html", items=products_list)
-
-
-@app.route("/admin", methods=["GET","POST"])
-def login():
+@app.route("/admin", methods=["GET", "POST"])
+def admin():
     if request.method == "POST":
-        username = request.form["username"]
-        password = request.form["password"]
+        username = request.form.get("username")
+        password = request.form.get("password")
 
-        if username == user and password == pas:
-            
-            return render_template("remove.html", items=data.load_data())
+        if username == user and password == pas:  
+
+            products_list = data.load_data()
+            return render_template("remove.html", product_list=products_list)
         else:
-            return render_template("admin.html")
+            error = "Invalid credentials"
+            return render_template("admin.html", error=error)
 
     return render_template("admin.html")
 
+
+
+@app.route("/remove/<int:product_id>", methods=["POST"])
+def remove_product(product_id):
+    products_list = data.remove(product_id)
+    return render_template("remove.html", product_list=products_list)
 
 
 app.run(debug=True)
