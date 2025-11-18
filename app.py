@@ -25,7 +25,7 @@ class ProductData():
     
     def dump_data(self, items):
         with open(self.data, "w") as file:
-            json.dump(items,file, indent=4)
+            json.dump(items, file, indent=4)
     
     def add_product(self, product):
         items = self.load_data()
@@ -48,6 +48,7 @@ def json_data(name,description,price,link):
 
     items = data.load_data()
     max_id = max(item["id"] for item in items) if items else 0
+
     new_product = {
         "id": max_id + 1,
         "name": name,
@@ -59,10 +60,12 @@ def json_data(name,description,price,link):
     }
     return new_product
 
+
 @app.route("/")
 def home():
     items = data.load_data()
     return render_template("index.html", items = items)
+
 
 
 @app.route("/products/<int:product_id>", methods=["GET", "POST"])
@@ -89,9 +92,11 @@ def details(product_id):
                 product["high"] = bid
                 product["last_bid_time"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
                 data.dump_data(products_list)
+
             else:
                 error = "Your bid must be higher than the current highest bid."
                 return render_template("products.html", product=product, error=error)
+            
         except ValueError:
             error = "Please enter a valid number."
             return render_template("products.html", product=product, error=error)
@@ -113,8 +118,6 @@ def add():
         price = request.form.get("price")
         link = request.form.get("link")
 
-        link = request.form.get("link")
-
     
 
       
@@ -125,6 +128,7 @@ def add():
             return render_template("add.html", error=error)
         try:
             price = float(price)
+
             if price <= 9: 
                 error = "Price must be 10 or greater minimum."
                 return render_template("add.html", error=error)
@@ -144,6 +148,7 @@ def add():
 
 @app.route("/admin", methods=["GET", "POST"])
 def admin():
+
     if request.method == "POST":
         username = request.form.get("username")
         password = request.form.get("password")
@@ -152,7 +157,9 @@ def admin():
 
             products_list = data.load_data()
             return render_template("remove.html", product_list=products_list)
+        
         else:
+
             error = "Invalid credentials"
             return render_template("admin.html", error=error)
 
@@ -162,7 +169,9 @@ def admin():
 
 @app.route("/remove/<int:product_id>", methods=["POST"])
 def remove_product(product_id):
+
     products_list = data.remove(product_id)
+
     return render_template("remove.html", product_list=products_list)
 
 
