@@ -56,15 +56,7 @@ def details(product_id):
             break
    
     if not product:
-        return "<link rel='stylesheet' " \
-        "href='../static/styles.css'>" \
-        "<body style='text-align : center'>" \
-        "<div class='not-found'>" \
-        "<p style='margin-top : 80px; font-size : 50px' > " \
-        "Product not found <br><br>404" \
-        "</p>" \
-        "</div>" \
-        "</body>", 404
+        return render_template("not-found.html")
 
 
     if request.method == "POST":

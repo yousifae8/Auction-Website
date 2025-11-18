@@ -15,7 +15,7 @@ body {
   margin-top: 200px;
   padding: 10px 20px;
   background-color: #ffc107;
-  color: black;
+  color: #0d1b2a;
   border-radius: 25px;
 }
 .login-form{
@@ -49,4 +49,9 @@ body {
 #back-home{
   color: rgba(255, 193, 7);
   font-size: 20px;
+}
+.back-home{
+  background-color: #0d1b2a;
+  padding: 10px;
+  border-radius: 10px;
 }
