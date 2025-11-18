@@ -9,44 +9,65 @@ app = Flask(__name__)
 user = "yousif"
 pas = "123"
 
-data = "products/products.json"
+path = "products/products.json"
 
-class idCounter():
-    """
-    This id counter class has two methods for now, 
-    the corrent number method which shows the last number 
-    and the increment method which increases the meantime number per adding one product. 
-    """
-    def __init__(self, id=0):
-        self.id = id
-    def id_current_num(self):
-        return self.id
 
-        
-    def id_increase(self):
-         self.id += 1
-         return self.id
-
-def products():
-    with open(data, "r") as products:
-        return json.load(products)
+class ProductData():
+    def __init__(self, data):
+        self.data = data
     
-items = products()
+    def load_data(self):
+        try:
+            with open(self.data) as file:
+                return json.load(file)
+        except FileNotFoundError:
+            return []
+    
+    def dump_data(self, items):
+        with open(self.data, "w") as file:
+            json.dump(items,file, indent=4)
+    
+    def add_product(self, product):
+        items = self.load_data()
+        items.append(product)
+        self.dump_data(items)
+    
+    def remove(self, product_id):
+        items = self.load_data()
+        products = [item for item in items if item["id"] != product_id]
+        self.dump_data(products)
+        return products
+    
 
-max_id = max(item["id"] for item in items) if items else 0
-
-id_num = idCounter(max_id)
-
-# def remove_product():
-#     return render_template("remove.html", items=items)
+data = ProductData(path)
 
 
 
+
+def json_data(name,description,price,link):
+
+    items = data.load_data()
+    max_id = max(item["id"] for item in items) if items else 0
+    new_product = {
+        "id": max_id + 1,
+        "name": name,
+        "description": description,
+        "price": float(price),
+        "high": float(price),
+        "link": link,
+        "created_at": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    }
+    return new_product
+
+@app.route("/")
+def home():
+    items = data.load_data()
+    return render_template("index.html", items = items)
 
 
 @app.route("/products/<int:product_id>", methods=["GET", "POST"])
 def details(product_id):
-    products_list = products()
+    products_list = data.load_data()
     product = None
 
    
@@ -67,8 +88,7 @@ def details(product_id):
             if bid > product["high"]:
                 product["high"] = bid
                 product["last_bid_time"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-                with open(data, "w") as file:
-                    json.dump(products_list, file, indent=4)
+                data.dump_data(products_list)
             else:
                 error = "Your bid must be higher than the current highest bid."
                 return render_template("products.html", product=product, error=error)
@@ -83,17 +103,6 @@ def details(product_id):
 
 
 
-def json_data(name,description,price,link):
-    new_product = {
-        "id": id_num.id_increase(),
-        "name": name,
-        "description": description,
-        "price": float(price),
-        "high": float(price),
-        "link": link,
-        "created_at": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    }
-    return new_product
 
 
 @app.route("/add", methods=["GET", "POST"])
@@ -109,36 +118,29 @@ def add():
             return render_template("add.html", error=error)
         try:
             price = float(price)
+            if price <= 9: 
+                error = "Price must be 10 or greater minimum."
+                return render_template("add.html", error=error)
+    
         except ValueError:
             error = "Price must be a valid number."
             return render_template("add.html", error=error)
         
 
         user_data = json_data(name,description,price,link)
-        with open(data) as products:
-            content = json.load(products)
-
-        content.append(user_data)
-        with open(data, "w") as file:
-            json.dump(content, file, indent=4)
+        
+        data.add_product(user_data)
 
         return redirect(url_for("home"))
     return render_template("add.html")
 
 
 
-@app.route("/remove/<int:product_id>", methods=["POST"])
+@app.route("/remove/<int:product_id>", methods=["GET","POST"])
 def remove_product(product_id):
-    products_list = products()
 
-    
-    products_list = [item for item in products_list if item["id"] != product_id]
+    products_list = data.remove(product_id)
 
-    
-    with open(data, "w") as file:
-        json.dump(products_list, file, indent=4)
-
-    
     return render_template("remove.html", items=products_list)
 
 
@@ -150,16 +152,12 @@ def login():
 
         if username == user and password == pas:
             
-            return render_template("remove.html", items=products())
+            return render_template("remove.html", items=data.load_data())
         else:
             return render_template("admin.html")
 
     return render_template("admin.html")
 
 
-@app.route("/")
-def home():
-    items = products()
-    return render_template("index.html", items = items)
 
 app.run(debug=True)
