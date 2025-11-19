@@ -29,16 +29,6 @@
         "last_bid_time": "2025-11-17 15:50:31"
     },
     {
-        "id": 4,
-        "name": "house",
-        "description": "Beige Bungalow House",
-        "price": 20000.0,
-        "high": 20000.1,
-        "link": "https://images.pexels.com/photos/259588/pexels-photo-259588.jpeg",
-        "created_at": "2025-11-17 11:15:18",
-        "last_bid_time": "2025-11-17 11:19:35"
-    },
-    {
         "id": 6,
         "name": "chess",
         "description": "Chess Pieces on Chess Board",
@@ -55,14 +45,5 @@
         "high": 70.0,
         "link": "https://images.pexels.com/photos/10292805/pexels-photo-10292805.jpeg",
         "created_at": "2025-11-17 16:49:16"
-    },
-    {
-        "id": 15,
-        "name": "house",
-        "description": "house",
-        "price": 20000.0,
-        "high": 20000.0,
-        "link": "https://ap.rdcpix.com/9f6944f11642cfbc9a834f2059829f7el-m1509888778rd-w960_h720.jpg",
-        "created_at": "2025-11-18 15:28:05"
     }
 ]

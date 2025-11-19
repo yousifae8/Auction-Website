@@ -6,13 +6,36 @@ import json
 
 app = Flask(__name__)
 
+#default username and password hardcoded
 user = "yousif"
 pas = "123"
 
+#json path
 path = "products/products.json"
 
 
+
 class ProductData():
+    """
+
+    ProductData handles and deal with the json file (products.json) and it has four methods.
+
+    load_data():
+    loads the current json file data into the named variable.
+    returns an empty list if the json file is empty.
+
+    dump_data():
+    writes the given list of product dictionaries back to the json file.
+    overwrites the file contents with the updated list.
+
+    add_product():
+    append a new product dictionary to the json file.
+    load the existing one, add the new product and saveas the updated list
+
+    removes a product with the specified id from the json file.
+    returns the updated list of products after removal.
+
+    """
     def __init__(self, data):
         self.data = data
     
@@ -38,12 +61,18 @@ class ProductData():
         self.dump_data(products)
         return products
     
+    @property
+    def total(self):
+        items = self.load_data()
+        return len(items)
+    
 
+#global variable for the json file data
 data = ProductData(path)
 
 
 
-
+# function to load the json file according to the given values.
 def json_data(name,description,price,link):
 
     items = data.load_data()
@@ -61,13 +90,14 @@ def json_data(name,description,price,link):
     return new_product
 
 
+#home page
 @app.route("/")
 def home():
     items = data.load_data()
     return render_template("index.html", items = items)
 
 
-
+#product page with the chosen id
 @app.route("/products/<int:product_id>", methods=["GET", "POST"])
 def details(product_id):
     products_list = data.load_data()
@@ -109,7 +139,7 @@ def details(product_id):
 
 
 
-
+#add page to add a product
 @app.route("/add", methods=["GET", "POST"])
 def add():
     if request.method == "POST":
@@ -117,10 +147,6 @@ def add():
         description = request.form.get("description")
         price = request.form.get("price")
         link = request.form.get("link")
-
-    
-
-      
 
 
         if not name or not description or not price or not link:
@@ -130,7 +156,7 @@ def add():
             price = float(price)
 
             if price <= 9: 
-                error = "Price must be 10 or greater minimum."
+                error = "Price must be 10 atleast or greater."
                 return render_template("add.html", error=error)
     
         except ValueError:
@@ -138,7 +164,7 @@ def add():
             return render_template("add.html", error=error)
         
 
-        user_data = json_data(str(name),str(description),price,str(link))
+        user_data = json_data(name,description,price,link)
         
         data.add_product(user_data)
 
@@ -146,6 +172,7 @@ def add():
     return render_template("add.html")
 
 
+#admin page to access remove.html page
 @app.route("/admin", methods=["GET", "POST"])
 def admin():
 
@@ -156,7 +183,8 @@ def admin():
         if username == user and password == pas:  
 
             products_list = data.load_data()
-            return render_template("remove.html", product_list=products_list)
+            total_products = data.total
+            return render_template("remove.html", product_list=products_list, total_products=total_products)
         
         else:
 
@@ -167,12 +195,14 @@ def admin():
 
 
 
+#remove page to remove the chosen product
 @app.route("/remove/<int:product_id>", methods=["POST"])
 def remove_product(product_id):
 
     products_list = data.remove(product_id)
+    total_products = data.total
 
-    return render_template("remove.html", product_list=products_list)
+    return render_template("remove.html", product_list=products_list, total_products = total_products)
 
 
 app.run(debug=True)
