@@ -149,7 +149,7 @@ def add():
         link = request.form.get("link","").strip()
 
         if not name or not description or not price or not link:
-            error = "All bars are required to be filled."
+            error = "All fields are required to be filled."
             return render_template("add.html", error=error)
         try:
             price = float(price)
