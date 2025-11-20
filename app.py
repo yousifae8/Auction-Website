@@ -204,4 +204,4 @@ def remove_product(product_id):
     return render_template("remove.html", product_list=products_list, total_products = total_products)
 
 
-app.run(debug=True)
+app.run()
