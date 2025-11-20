@@ -143,11 +143,10 @@ def details(product_id):
 @app.route("/add", methods=["GET", "POST"])
 def add():
     if request.method == "POST":
-        name = request.form.get("name")
-        description = request.form.get("description")
-        price = request.form.get("price")
-        link = request.form.get("link")
-
+        name = request.form.get("name","").strip()
+        description = request.form.get("description", "").strip()
+        price = request.form.get("price","").strip()
+        link = request.form.get("link","").strip()
 
         if not name or not description or not price or not link:
             error = "All bars are required to be filled."
@@ -205,4 +204,4 @@ def remove_product(product_id):
     return render_template("remove.html", product_list=products_list, total_products = total_products)
 
 
-app.run(debug=True)
+app.run()
