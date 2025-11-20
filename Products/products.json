@@ -14,9 +14,10 @@
         "name": "Mac",
         "description": "Minimalist Workspace with Apple Laptop and Keyboard",
         "price": 1500.0,
-        "high": 1500.0,
+        "high": 1700.0,
         "link": "https://images.pexels.com/photos/34703569/pexels-photo-34703569.jpeg",
-        "created_at": "2025-11-16 14:13:34"
+        "created_at": "2025-11-16 14:13:34",
+        "last_bid_time": "2025-11-20 09:48:25"
     },
     {
         "id": 3,
@@ -48,47 +49,29 @@
     },
     {
         "id": 15,
-        "name": "random",
-        "description": "random",
-        "price": 123.0,
-        "high": 123.0,
-        "link": "https://lipsum.app/640x480/",
-        "created_at": "2025-11-20 09:23:48"
+        "name": "BMW",
+        "description": "Blue Bmw Sedan Near Green Lawn Grass",
+        "price": 40000.0,
+        "high": 40000.0,
+        "link": "https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg",
+        "created_at": "2025-11-20 09:51:08"
     },
     {
         "id": 16,
-        "name": "aaa",
-        "description": "aaa",
-        "price": 123.0,
-        "high": 123.0,
-        "link": "https://lipsum.app/random/1600x900",
-        "created_at": "2025-11-20 09:24:31"
+        "name": "two screens",
+        "description": "Two Computer Flat Screen Monitors",
+        "price": 1200.0,
+        "high": 1200.0,
+        "link": "https://images.pexels.com/photos/777001/pexels-photo-777001.jpeg",
+        "created_at": "2025-11-20 09:52:36"
     },
     {
         "id": 17,
-        "name": "  ",
-        "description": "  ",
-        "price": 123.0,
-        "high": 123.0,
-        "link": "https://lipsum.app/random/1600x900",
-        "created_at": "2025-11-20 09:24:57"
-    },
-    {
-        "id": 18,
-        "name": "cvcv",
-        "description": "cvcv",
-        "price": 123.0,
-        "high": 123.0,
-        "link": "https://lipsum.app/id/24/1600x900",
-        "created_at": "2025-11-20 09:29:37"
-    },
-    {
-        "id": 19,
-        "name": "11",
-        "description": "11",
-        "price": 11.0,
-        "high": 11.0,
-        "link": "11",
-        "created_at": "2025-11-20 09:30:05"
+        "name": "Flat",
+        "description": "Modern Living Room With Tv",
+        "price": 3000.0,
+        "high": 3000.0,
+        "link": "https://images.pexels.com/photos/5490300/pexels-photo-5490300.jpeg",
+        "created_at": "2025-11-20 09:57:11"
     }
 ]

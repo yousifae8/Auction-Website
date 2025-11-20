@@ -143,8 +143,8 @@ def details(product_id):
 @app.route("/add", methods=["GET", "POST"])
 def add():
     if request.method == "POST":
-        name = request.form.get("name","").strip()
-        description = request.form.get("description", "").strip()
+        name = request.form.get("name","").strip().title()
+        description = request.form.get("description", "").strip().title()
         price = request.form.get("price","").strip()
         link = request.form.get("link","").strip()
 
@@ -204,4 +204,4 @@ def remove_product(product_id):
     return render_template("remove.html", product_list=products_list, total_products = total_products)
 
 
-app.run()
+app.run(debug=True)
