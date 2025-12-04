@@ -13,7 +13,7 @@ A web application built with Flask that allows users to browse products and add 
 ## Prerequisites
 - Python 3
 - Flask
-- No external libraries
+- Bootstrap
 
 ## Project Checklist
 - [x] It is available on GitHub.
